@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"  version="2.5">
+    <!-- cron jobs -->
+    <servlet>
+        <servlet-name>QuoteCron</servlet-name>
+        <servlet-class>cron.QuoteCron</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>QuoteCron</servlet-name>
+        <url-pattern>/cron/quote</url-pattern>
+    </servlet-mapping>
+
+
     <!-- wrap the backend with Endpoints Frameworks v2 -->
     <servlet>
         <servlet-name>EndpointsServlet</servlet-name>
@@ -36,7 +48,7 @@
         </init-param>
         <init-param>
             <param-name>endpoints.serviceName</param-name>
-            <param-value>server-storage-api.endpoints.${endpoints.project.id}.cloud.goog</param-value>
+            <param-value>business-logic-api.endpoints.${endpoints.project.id}.cloud.goog</param-value>
         </init-param>
     </filter>
 

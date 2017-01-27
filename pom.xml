@@ -85,8 +85,8 @@
                             <mainClass>com.google.api.server.spi.tools.EndpointsTool</mainClass>
                             <arguments>
                                 <argument>get-swagger-doc</argument>
-                                <argument>--hostname=server-storage-api.endpoints.${endpoints.project.id}.cloud.goog</argument>
-                                <argument>--war=target/server-storage-1.0</argument>
+                                <argument>--hostname=${project.artifactId}-api.endpoints.${endpoints.project.id}.cloud.goog</argument>
+                                <argument>--war=target/${project.artifactId}-${project.version}</argument>
                                 <argument>rest.Entity</argument>
                             </arguments>
                         </configuration>
