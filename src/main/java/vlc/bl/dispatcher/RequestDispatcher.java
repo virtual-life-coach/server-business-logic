@@ -9,6 +9,7 @@ import vlc.ldb.soap.UserTO;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -25,8 +26,10 @@ public class RequestDispatcher {
     }
 
     private static String getRandomQuote() {
-        WebTarget resource = ClientBuilder.newClient().target(Constants.EXTERNAL_ADAPTER_ENDPOINT + "quote");
-        Response response = resource.request().accept(MediaType.APPLICATION_JSON).get();
+        WebTarget resource = ClientBuilder.newClient().target(Constants.EXTERNAL_ADAPTER_ENDPOINT +
+                "_ah/api/adapter/v1/quote");
+        Response response = resource.request().accept(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON).get();
         response.bufferEntity();
         QuoteTO quoteTO = response.readEntity(QuoteTO.class);
         return quoteTO.getQuote();
