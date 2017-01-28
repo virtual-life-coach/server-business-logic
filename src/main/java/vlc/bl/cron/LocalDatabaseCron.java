@@ -54,7 +54,7 @@ public class LocalDatabaseCron extends HttpServlet {
         userActivity.setTargetValue(6L);
         userActivity.setCurrentValue(0L);
         Date tomorrowDate = new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh.mm.ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH.mm.ss");
         userActivity.setDeadlineDate(formatter.format(tomorrowDate));
         userActivity.setCompleted(false);
         service.createUserActivity(userActivity);
