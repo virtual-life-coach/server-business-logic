@@ -11,6 +11,12 @@
     </cron>
 
     <cron>
+        <url>/cron/activity</url>
+        <description>daily activity</description>
+        <schedule>every day 08:00</schedule>
+    </cron>
+
+    <cron>
         <url>/cron/database</url>
         <description>init database</description>
         <schedule>every 8 hours</schedule>

@@ -13,6 +13,17 @@
 
 
     <servlet>
+        <servlet-name>ActivityCron</servlet-name>
+        <servlet-class>vlc.bl.cron.ActivityCron</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ActivityCron</servlet-name>
+        <url-pattern>/cron/activity</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>LocalDatabaseCron</servlet-name>
         <servlet-class>vlc.bl.cron.LocalDatabaseCron</servlet-class>
     </servlet>

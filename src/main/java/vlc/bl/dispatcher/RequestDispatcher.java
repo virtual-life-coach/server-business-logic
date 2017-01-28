@@ -1,11 +1,10 @@
 package vlc.bl.dispatcher;
 
+import vlc.bl.activity.ActivityCreator;
 import vlc.common.connectors.Telegram;
 import vlc.common.to.QuoteTO;
 import vlc.common.util.Constants;
-import vlc.ldb.soap.LocalDatabase;
-import vlc.ldb.soap.LocalDatabaseService;
-import vlc.ldb.soap.UserTO;
+import vlc.ldb.soap.*;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -18,10 +17,19 @@ public class RequestDispatcher {
 
     public static void sendDailyQuote() {
         LocalDatabase service = new LocalDatabaseService().getLocalDatabaseImplPort();
-        List<UserTO> users = service.listUsers();
-        for (UserTO user : users) {
-            String randomQuote = getRandomQuote();
-            Telegram.sendMessage(user.getTelegramId(), randomQuote);
+        List<UserTO> usersSoap = service.listUsers();
+        for (UserTO userSoap : usersSoap) {
+            Telegram.sendMessage(userSoap.getTelegramId(), getRandomQuote());
+        }
+    }
+
+    public static void sendDailyActivity() {
+        LocalDatabase service = new LocalDatabaseService().getLocalDatabaseImplPort();
+        List<UserTO> usersSoap = service.listUsers();
+        for (UserTO userSoap : usersSoap) {
+            UserActivityTO userActivitySoap = ActivityCreator.createActivity(service, userSoap);
+            Telegram.sendMessage(userSoap.getTelegramId(), "Hey, champ! There is a new activity for you. " +
+                    "Have a look at it! Id: " + userActivitySoap.getId());
         }
     }
 

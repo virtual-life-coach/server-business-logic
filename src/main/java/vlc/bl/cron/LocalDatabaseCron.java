@@ -41,30 +41,51 @@ public class LocalDatabaseCron extends HttpServlet {
         doctor.setTelegramId("45845150");
         doctor = service.createDoctor(doctor);
 
-        ActivityTO activity = new ActivityTO();
-        activity.setDescription("Go out for a walk!");
-        service.createActivity(activity);
-        activity.setDescription("Go to the grocery store!");
-        activity = service.createActivity(activity);
+        ActivityTO activity1 = new ActivityTO();
+        activity1.setDescription("Go out for a walk!");
+        service.createActivity(activity1);
+
+        ActivityTO activity2 = new ActivityTO();
+        activity2.setDescription("Go to the grocery store!");
+        activity2 = service.createActivity(activity1);
+
+        Date tomorrowDate = new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
+        Date yesterdayDate = new Date(System.currentTimeMillis() - 24 * 60 * 60 * 1000);
+        SimpleDateFormat formatter = new SimpleDateFormat(Constants.DATE_FORMAT);
 
         UserActivityTO userActivity = new UserActivityTO();
-        userActivity.setActivityId(activity.getId());
+        userActivity.setActivityId(activity1.getId());
         userActivity.setUserId(user.getId());
         userActivity.setDetails("Buy 4 eggs and 2 apples.");
-        userActivity.setTargetValue(6L);
+        userActivity.setTargetValue(100L);
         userActivity.setCurrentValue(0L);
-        Date tomorrowDate = new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH.mm.ss");
         userActivity.setDeadlineDate(formatter.format(tomorrowDate));
         userActivity.setCompleted(false);
         service.createUserActivity(userActivity);
 
+        UserActivityTO userActivity2 = new UserActivityTO();
+        userActivity2.setActivityId(activity2.getId());
+        userActivity2.setUserId(user.getId());
+        userActivity2.setDetails("Daily goal: 5 km!");
+        userActivity2.setTargetValue(100L);
+        userActivity2.setCurrentValue(100L);
+        userActivity2.setDeadlineDate(formatter.format(yesterdayDate));
+        userActivity2.setCompleted(true);
+        service.createUserActivity(userActivity2);
+
         AppointmentTO appointment = new AppointmentTO();
         appointment.setUserId(user.getId());
         appointment.setDoctorId(doctor.getId());
-        appointment.setDate("04-02-2017");
-        appointment.setLocation("Via Sommarive, 78");
+        appointment.setDate(formatter.format(tomorrowDate));
+        appointment.setLocation("Via Tauro, 42");
         service.createAppointment(appointment);
+
+        AppointmentTO appointment2 = new AppointmentTO();
+        appointment2.setUserId(user.getId());
+        appointment2.setDoctorId(doctor.getId());
+        appointment2.setDate(formatter.format(yesterdayDate));
+        appointment2.setLocation("Via Tauro, 42");
+        service.createAppointment(appointment2);
 
         MeasurementTO measurement = new MeasurementTO();
         measurement.setUserId(user.getId());
