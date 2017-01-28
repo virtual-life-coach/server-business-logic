@@ -48,7 +48,7 @@
         </init-param>
         <init-param>
             <param-name>endpoints.serviceName</param-name>
-            <param-value>business-logic-api.endpoints.${endpoints.project.id}.cloud.goog</param-value>
+            <param-value>server-business-logic-api.endpoints.${endpoints.project.id}.cloud.goog</param-value>
         </init-param>
     </filter>
 
