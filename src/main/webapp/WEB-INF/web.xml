@@ -3,7 +3,7 @@
     <!-- cron jobs -->
     <servlet>
         <servlet-name>QuoteCron</servlet-name>
-        <servlet-class>cron.QuoteCron</servlet-class>
+        <servlet-class>vlc.bl.cron.QuoteCron</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -18,7 +18,7 @@
         <servlet-class>com.google.api.server.spi.EndpointsServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>rest.Entity</param-value>
+            <param-value>vlc.bl.rest.Entity</param-value>
         </init-param>
     </servlet>
 

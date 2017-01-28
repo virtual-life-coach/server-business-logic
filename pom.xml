@@ -87,7 +87,7 @@
                                 <argument>get-swagger-doc</argument>
                                 <argument>--hostname=${project.artifactId}-api.endpoints.${endpoints.project.id}.cloud.goog</argument>
                                 <argument>--war=target/${project.artifactId}-${project.version}</argument>
-                                <argument>rest.Entity</argument>
+                                <argument>vlc.bl.rest.Entity</argument>
                             </arguments>
                         </configuration>
                         <dependencies>

@@ -1,4 +1,4 @@
-package cron;
+package vlc.bl.cron;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
