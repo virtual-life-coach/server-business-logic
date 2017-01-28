@@ -12,6 +12,17 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>LocalDatabaseCron</servlet-name>
+        <servlet-class>vlc.bl.cron.LocalDatabaseCron</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LocalDatabaseCron</servlet-name>
+        <url-pattern>/cron/database</url-pattern>
+    </servlet-mapping>
+
+
     <!-- wrap the backend with Endpoints Frameworks v2 -->
     <servlet>
         <servlet-name>EndpointsServlet</servlet-name>
