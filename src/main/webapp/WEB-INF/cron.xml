@@ -3,7 +3,7 @@
     <cron>
         <url>/cron/quote</url>
         <description>daily quote</description>
-        <schedule>every 24 hours</schedule>
+        <schedule>every day 16:00</schedule>
         <retry-parameters>
             <min-backoff-seconds>2.5</min-backoff-seconds>
             <max-doublings>5</max-doublings>
@@ -20,9 +20,5 @@
         <url>/cron/database</url>
         <description>init database</description>
         <schedule>every 8 hours</schedule>
-        <retry-parameters>
-            <min-backoff-seconds>2.5</min-backoff-seconds>
-            <max-doublings>5</max-doublings>
-        </retry-parameters>
     </cron>
 </cronentries>

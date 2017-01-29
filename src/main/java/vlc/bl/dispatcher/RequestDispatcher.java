@@ -12,12 +12,16 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class RequestDispatcher {
+
+    private static Logger log = Logger.getLogger(RequestDispatcher.class.getName());
 
     public static void sendDailyQuote() {
         LocalDatabase service = new LocalDatabaseService().getLocalDatabaseImplPort();
         List<UserTO> usersSoap = service.listUsers();
+        log.info("Users retrieved: " + usersSoap);
         for (UserTO userSoap : usersSoap) {
             Telegram.sendMessage(userSoap.getTelegramId(), getRandomQuote());
         }
