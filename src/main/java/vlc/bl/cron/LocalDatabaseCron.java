@@ -34,6 +34,13 @@ public class LocalDatabaseCron extends HttpServlet {
         user.setTelegramId("45845150");
         user = service.createUser(user);
 
+        UserTO user2 = new UserTO();
+        user2.setName("Gabriele");
+        user2.setSurname("C.");
+        user2.setBirthday("04-02-1993");
+        user2.setTelegramId("254736676");
+        service.createUser(user2);
+
         DoctorTO doctor = new DoctorTO();
         doctor.setName("Francesco");
         doctor.setSurname("Marzotta");
