@@ -17,6 +17,12 @@
     </cron>
 
     <cron>
+        <url>/cron/receipt</url>
+        <description>daily receipt</description>
+        <schedule>every day 11:45</schedule>
+    </cron>
+
+    <cron>
         <url>/cron/database</url>
         <description>init database</description>
         <schedule>every 8 hours</schedule>

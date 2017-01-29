@@ -24,6 +24,17 @@
 
 
     <servlet>
+        <servlet-name>ReceiptCron</servlet-name>
+        <servlet-class>vlc.bl.cron.ReceiptCron</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ReceiptCron</servlet-name>
+        <url-pattern>/cron/receipt</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>LocalDatabaseCron</servlet-name>
         <servlet-class>vlc.bl.cron.LocalDatabaseCron</servlet-class>
     </servlet>
@@ -32,50 +43,4 @@
         <servlet-name>LocalDatabaseCron</servlet-name>
         <url-pattern>/cron/database</url-pattern>
     </servlet-mapping>
-
-
-    <!-- wrap the backend with Endpoints Frameworks v2 -->
-    <servlet>
-        <servlet-name>EndpointsServlet</servlet-name>
-        <servlet-class>com.google.api.server.spi.EndpointsServlet</servlet-class>
-        <init-param>
-            <param-name>services</param-name>
-            <param-value>vlc.bl.rest.Entity</param-value>
-        </init-param>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>EndpointsServlet</servlet-name>
-        <url-pattern>/_ah/api/*</url-pattern>
-    </servlet-mapping>
-
-    <!-- add a filter that fetches the service config from service management -->
-    <filter>
-        <filter-name>endpoints-api-configuration</filter-name>
-        <filter-class>com.google.api.control.ServiceManagementConfigFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>endpoints-api-configuration</filter-name>
-        <servlet-name>EndpointsServlet</servlet-name>
-    </filter-mapping>
-
-    <!-- add a filter that performs Endpoints logging and monitoring -->
-    <filter>
-        <filter-name>endpoints-api-controller</filter-name>
-        <filter-class>com.google.api.control.extensions.appengine.GoogleAppEngineControlFilter</filter-class>
-        <init-param>
-            <param-name>endpoints.projectId</param-name>
-            <param-value>${endpoints.project.id}</param-value>
-        </init-param>
-        <init-param>
-            <param-name>endpoints.serviceName</param-name>
-            <param-value>server-business-logic-api.endpoints.${endpoints.project.id}.cloud.goog</param-value>
-        </init-param>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>endpoints-api-controller</filter-name>
-        <servlet-name>EndpointsServlet</servlet-name>
-    </filter-mapping>
 </web-app>
