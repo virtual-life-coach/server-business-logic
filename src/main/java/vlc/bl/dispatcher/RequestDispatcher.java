@@ -48,7 +48,7 @@ public class RequestDispatcher {
             byte[] stringBytes = randomReceipt.getBytes();
             String asciiString = new String(stringBytes, Charset.forName("US-ASCII"));
             log.info("Converted to ascii...");
-            Telegram.sendMessage(userSoap.getTelegramId(), "Hey, this a new receipt for you. Why don't you try it today?\n" + asciiString);
+            Telegram.sendMessage(userSoap.getTelegramId(), "Hey, this a new recipe for you. Why don't you try it today?\n" + asciiString);
         }
     }
 
