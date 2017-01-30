@@ -25,7 +25,7 @@ The project repository is made up of the following *files* and **folders**:
             * *LocalDatabaseCron.java*: reinitialize local database
             * *QuoteCron.java*: fetches and send a daily quote to users
             * *ReceiptCron.java*: fetches and send a daily receipt to users
-        * **dispatcher**: business logic
+        * **dispatcher**: requests dispatcher
             * *RequestDispatcher.java*: dispatch requests appropriately
     * **webapp**: web application
         * **WEB-INF**: web application resources
