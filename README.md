@@ -20,7 +20,7 @@ The project repository is made up of the following *files* and **folders**:
     * **java/vlc/bl**: Java source code
         * **activity**: user-tailored activity creation logic
             * *ActivityCreator.java*: user activity creator 
-        * **cron**: cron jobs servlet
+        * **cron**: cron jobs servlets
             * *ActivityCron.java*: create and send a daily activity to users
             * *LocalDatabaseCron.java*: reinitialize local database
             * *QuoteCron.java*: fetches and send a daily quote to users
